@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'app works!';
 
   mascots = [
-    {name: 1},
-    {name: 2},
+    {name: 'Akron Zips',           imageSrc: 'assets/images/mascots/akron_zips.png'},
+    {name: 'alabama crimson tide', imageSrc: 'assets/images/mascots/alabama_crimson_tide.png'},
   ]
 }
