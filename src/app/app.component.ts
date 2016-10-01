@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MASCOT_DATA } from './mascot-data';
+import { Mascot } from './mascot';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  mascots = [];
   title = 'app works!';
+  selectedYear = '2015';
+  mascotImagePath = 'assets/images/mascots/';
 
-  mascots = [
-    {name: 'Akron Zips',           imageSrc: 'assets/images/mascots/akron_zips.png'},
-    {name: 'alabama crimson tide', imageSrc: 'assets/images/mascots/alabama_crimson_tide.png'},
-  ]
+  ngOnInit(): void {
+    for (let atts of MASCOT_DATA[this.selectedYear]) {
+      this.mascots.push(new Mascot(atts));
+    }
+  }
 }

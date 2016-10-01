@@ -1,6 +1,7 @@
 <ul>
   <li *ngFor="let mascot of mascots">
-    {{mascot.name}}
-    <img src="{{mascot.imageSrc}}" />
+    {{mascot.school}} {{mascot.name}} ({{mascot.tag}})
+    <br />
+    <img src="/assets/images/mascots/{{mascot.imageFileName()}}" />
   </li>
 </ul>
