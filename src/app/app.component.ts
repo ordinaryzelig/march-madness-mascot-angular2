@@ -41,18 +41,14 @@ export class AppComponent implements OnInit {
   }
 
   private initTags(): void {
-    for (let tagName of this.tagNames()) {
-      let tag = new Tag()
+    let tagNames = new Set([]);
+    for (let mascot of this.mascots) { tagNames.add(mascot.tag); }
+
+    tagNames.forEach(tagName => {
+      let tag = new Tag();
       tag.name = tagName;
       this.tags.push(tag);
-    }
-  }
-
-  private tagNames(): string[] {
-    return [
-      'human',
-      'cat',
-    ]
+    });
   }
 
   private selectedTags(): Tag[] {
