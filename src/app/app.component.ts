@@ -16,13 +16,13 @@ export class AppComponent implements OnInit {
   mascots = [];
   showableMascots = [];
   tags = [];
-  selectedYear = '2015';
+  years = [];
+  selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
 
   ngOnInit(): void {
-    this.initMascots();
-    this.showableMascots = this.mascots.slice(0);
-    this.initTags();
+    this.initYears();
+    this.changeYear(this.years[this.years.length - 1]);
   }
 
   filterMascots(): void {
@@ -34,16 +34,29 @@ export class AppComponent implements OnInit {
       });
   }
 
+  changeYear(year): void {
+    this.selectedYear = year;
+    this.initMascots();
+    this.showableMascots = this.mascots.slice(0);
+    this.initTags();
+  }
+
   //////////
   // PRIVATE
 
+  initYears(): void {
+    for (let year in MASCOT_DATA) { this.years.push(year); }
+  }
+
   private initMascots(): void {
+    this.mascots = [];
     for (let atts of MASCOT_DATA[this.selectedYear]) {
       this.mascots.push(new Mascot(atts));
     }
   }
 
   private initTags(): void {
+    this.tags = [];
     let tagNames = new Set([]);
     for (let mascot of this.mascots) { tagNames.add(mascot.tag); }
 

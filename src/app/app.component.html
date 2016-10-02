@@ -1,9 +1,17 @@
-<li *ngFor="let tag of tags">
-  <label>
-    {{tag.name}}
-    <input type="checkbox" [(ngModel)]="tag.selected" (ngModelChange)="filterMascots()"/>
-  </label>
-</li>
+<select (change)="changeYear($event.target.value)">
+  <option *ngFor="let year of years" [value]="year" [selected]="year == selectedYear">{{year}}</option>
+</select>
+
+<div class="tags">
+  <ul>
+    <li *ngFor="let tag of tags">
+      <label>
+        {{tag.name}}
+        <input type="checkbox" [(ngModel)]="tag.selected" (ngModelChange)="filterMascots()"/>
+      </label>
+    </li>
+  </ul>
+</div>
 
 <div class="mascots">
   <ul>
