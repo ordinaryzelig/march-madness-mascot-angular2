@@ -37,9 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   selectableMascots(): Mascot[] {
-    let tagNames = [];
-    for (let tag of this.showableTags()) { tagNames.push(tag.name); }
-
+    let tagNames = this.mapTagNames(this.showableTags());
     return this.mascots.filter(
       mascot => !mascot.selected && tagNames.indexOf(mascot.tag) >= 0
     );
@@ -72,5 +70,11 @@ export class AppComponent implements OnInit {
   private showableTags(): Tag[] {
     let selectedTags = this.tags.filter(t => t.selected);
     return selectedTags.length > 0 ? selectedTags : this.tags;
+  }
+
+  private mapTagNames(tags): string[] {
+    let tagNames = [];
+    for (let tag of tags) { tagNames.push(tag.name); }
+    return tagNames;
   }
 }
