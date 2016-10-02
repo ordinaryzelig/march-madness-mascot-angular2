@@ -12,7 +12,6 @@ import { Tag }         from './tag';
 
 export class AppComponent implements OnInit {
   mascots = [];
-  showableMascots = [];
   tags = [];
   years = [];
   selectedYear = null;
@@ -23,20 +22,27 @@ export class AppComponent implements OnInit {
     this.changeYear(this.years[this.years.length - 1]);
   }
 
-  filterMascots(): void {
-    let tagNames = [];
-    for (let tag of this.showableTags()) { tagNames.push(tag.name); }
-    this.showableMascots =
-      this.mascots.filter(mascot => {
-        return tagNames.indexOf(mascot.tag) >= 0;
-      });
-  }
-
   changeYear(year): void {
     this.selectedYear = year;
     this.initMascots();
-    this.showableMascots = this.mascots.slice(0);
     this.initTags();
+  }
+
+  selectMascot(mascot): void {
+    mascot.selected = true;
+  }
+
+  selectedMascots(): Mascot[] {
+    return this.mascots.filter(mascot => mascot.selected);
+  }
+
+  selectableMascots(): Mascot[] {
+    let tagNames = [];
+    for (let tag of this.showableTags()) { tagNames.push(tag.name); }
+
+    return this.mascots.filter(
+      mascot => !mascot.selected && tagNames.indexOf(mascot.tag) >= 0
+    );
   }
 
   //////////
@@ -64,7 +70,7 @@ export class AppComponent implements OnInit {
   }
 
   private showableTags(): Tag[] {
-    let selectedTags = this.tags.filter(t => { return t.selected });
+    let selectedTags = this.tags.filter(t => t.selected);
     return selectedTags.length > 0 ? selectedTags : this.tags;
   }
 }

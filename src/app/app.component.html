@@ -7,16 +7,23 @@
     <li *ngFor="let tag of tags">
       <label>
         {{tag.name}}
-        <input type="checkbox" [(ngModel)]="tag.selected" (ngModelChange)="filterMascots()"/>
+        <input type="checkbox" [(ngModel)]="tag.selected" />
       </label>
     </li>
   </ul>
 </div>
 
+<div class="selectedMascots">
+  Selected Mascots
+  <ol>
+    <li *ngFor="let mascot of selectedMascots()">{{mascot.school}} {{mascot.name}}</li>
+  </ol>
+</div>
+
 <div class="mascots">
   <ul>
-    <li *ngFor="let mascot of showableMascots">
-      {{mascot.school}} {{mascot.name}} ({{mascot.tag}})
+    <li *ngFor="let mascot of selectableMascots()" (click)="selectMascot(mascot)">
+      {{mascot.school}} {{mascot.name}}
       <br />
       <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" />
     </li>

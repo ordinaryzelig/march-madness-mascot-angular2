@@ -2,6 +2,7 @@ export class Mascot {
   name: string;
   school: string;
   tag: string;
+  selected: boolean;
 
   constructor(atts) {
     for (let attr of ['school', 'name', 'tag']) {
