@@ -16,7 +16,10 @@
 <div class="selectedMascots">
   Selected Mascots
   <ol>
-    <li *ngFor="let mascot of selectedMascots()">{{mascot.school}} {{mascot.name}}</li>
+    <li *ngFor="let mascot of selectedMascots()">
+      {{mascot.school}} {{mascot.name}}
+      <a (click)="unselectMascot(mascot)">X</a>
+    </li>
   </ol>
 </div>
 

@@ -32,6 +32,10 @@ export class AppComponent implements OnInit {
     mascot.selected = true;
   }
 
+  unselectMascot(mascot): void {
+    mascot.selected = false;
+  }
+
   selectedMascots(): Mascot[] {
     return this.mascots.filter(mascot => mascot.selected);
   }
