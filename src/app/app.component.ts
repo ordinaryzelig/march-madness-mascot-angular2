@@ -11,8 +11,6 @@ import { Tag }         from './tag';
 })
 
 export class AppComponent implements OnInit {
-  title = 'app works!';
-
   mascots = [];
   showableMascots = [];
   tags = [];
