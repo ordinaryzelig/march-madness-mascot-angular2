@@ -65,6 +65,12 @@ export class AppComponent implements OnInit {
     tagNames.forEach(tagName => {
       this.tags.push(new Tag(tagName));
     });
+
+    this.tags.sort((a, b) => {
+      if (a.name < b.name) { return -1 };
+      if (a.name > b.name) { return 1 };
+      return 0;
+    } );
   }
 
   private showableTags(): Tag[] {
