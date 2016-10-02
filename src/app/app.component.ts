@@ -34,6 +34,9 @@ export class AppComponent implements OnInit {
       });
   }
 
+  //////////
+  // PRIVATE
+
   private initMascots(): void {
     for (let atts of MASCOT_DATA[this.selectedYear]) {
       this.mascots.push(new Mascot(atts));
@@ -45,17 +48,12 @@ export class AppComponent implements OnInit {
     for (let mascot of this.mascots) { tagNames.add(mascot.tag); }
 
     tagNames.forEach(tagName => {
-      let tag = new Tag();
-      tag.name = tagName;
-      this.tags.push(tag);
+      this.tags.push(new Tag(tagName));
     });
   }
 
-  private selectedTags(): Tag[] {
-    return this.tags.filter(t => { return t.selected });
-  }
-
   private showableTags(): Tag[] {
-    return this.selectedTags().length > 0 ? this.selectedTags() : this.tags;
+    let selectedTags = this.tags.filter(t => { return t.selected });
+    return selectedTags.length > 0 ? selectedTags : this.tags;
   }
 }
