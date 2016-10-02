@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   //////////
   // PRIVATE
 
-  initYears(): void {
+  private initYears(): void {
     for (let year in MASCOT_DATA) { this.years.push(year); }
   }
 
