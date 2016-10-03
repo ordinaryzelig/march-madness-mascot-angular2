@@ -1,0 +1,23 @@
+@import "../../node_modules/bootstrap/less/variables";
+@import "../../node_modules/bootstrap/less/mixins";
+
+.selectableMascots {
+  li {
+    height: 400px;
+    .make-md-column(3);
+    .make-lg-column(2);
+    .mascot-card {
+      border: 1px solid black;
+      padding: 5px;
+      .img {
+        .center-block();
+      }
+      .info {
+        font-weight: bold;
+        .school .name {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

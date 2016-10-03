@@ -3,11 +3,11 @@
 </select>
 
 <div class="tags">
-  <ul>
+  <ul class="list-unstyled">
     <li *ngFor="let tag of tags">
       <label>
-        {{tag.name}}
         <input type="checkbox" [(ngModel)]="tag.selected" />
+        {{tag.name}}
       </label>
     </li>
   </ul>
@@ -24,11 +24,16 @@
 </div>
 
 <div class="selectableMascots">
-  <ul>
-    <li *ngFor="let mascot of selectableMascots()" (click)="selectMascot(mascot)">
-      {{mascot.school}} {{mascot.name}}
-      <br />
-      <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" />
+  <ul class="list-unstyled">
+    <li *ngFor="let mascot of selectableMascots()">
+      <div class="mascot-card" (click)="selectMascot(mascot)">
+        <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" class="img-responsive" />
+        <div class="info text-center">
+          <div class="school">{{mascot.school}}</div>
+          <div class="name">{{mascot.name}}</div>
+          <div class="tag label label-default">{{mascot.tag}}</div>
+        </div>
+      </div>
     </li>
   </ul>
 </div>
