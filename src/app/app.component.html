@@ -18,7 +18,7 @@
   <ol>
     <li *ngFor="let mascot of selectedMascots()">
       {{mascot.school}} {{mascot.name}}
-      <a (click)="unselectMascot(mascot)">X</a>
+      <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
     </li>
   </ol>
 </div>
