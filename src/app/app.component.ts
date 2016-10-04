@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from '../../node_modules/angular-2-dropdown-multiselect/src/multiselect-dropdown';
+
 import { MASCOT_DATA } from './mascot-data';
 import { Mascot }      from './mascot';
 import { Tag }         from './tag';
@@ -16,6 +18,25 @@ export class AppComponent implements OnInit {
   years = [];
   selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
+
+  private selectedOptions: number[];
+  private myOptions: IMultiSelectOption[] = [
+    {id: 1, name: 'one'},
+    {id: 2, name: 'two'},
+  ]
+  private mySettings: IMultiSelectSettings = {
+    pullRight: false,
+    enableSearch: true,
+    checkedStyle: 'checkboxes',
+    buttonClasses: 'btn btn-default',
+    selectionLimit: 0,
+    closeOnSelect: false,
+    showCheckAll: true,
+    showUncheckAll: true,
+    dynamicTitleMaxItems: 3,
+    maxHeight: '300px',
+  };
+
 
   ngOnInit(): void {
     this.initYears();

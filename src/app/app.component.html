@@ -13,6 +13,14 @@
   </ul>
 </div>
 
+<div class="tags">
+  <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="selectedOptions" [settings]="mySettings" (ngModelChange)="onChange" id="tagFilter" >
+    <option [value]="tag.name" *ngFor="let tag of tags">
+      {{tag.name}}
+    </option>
+  </ss-multiselect-dropdown>
+</div>
+
 <div class="selectedMascots">
   Selected Mascots
   <ol>
