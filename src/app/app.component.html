@@ -1,54 +1,58 @@
 <div class="container-fluid">
 
-  <select (change)="changeYear($event.target.value)">
-    <option *ngFor="let year of years" [value]="year" [selected]="year == selectedYear">{{year}}</option>
-  </select>
+  <div class="menu">
+    <select (change)="changeYear($event.target.value)">
+      <option *ngFor="let year of years" [value]="year" [selected]="year == selectedYear">{{year}}</option>
+    </select>
 
-  <div class="tags">
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-        Categories
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li *ngFor="let tag of tags">
-          <label>
-            <input type="checkbox" [(ngModel)]="tag.selected" />
-            {{tag.name}}
-          </label>
-        </li>
-      </ul>
+    <div class="tags">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+          Categories
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let tag of tags">
+            <label>
+              <input type="checkbox" [(ngModel)]="tag.selected" />
+              {{tag.name}}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="search">
+      <input #searchBox placeholder="Search" (keyup)="search(searchBox.value)" />
     </div>
   </div>
 
-  <div class="search">
-    <input #searchBox placeholder="Search" (keyup)="search(searchBox.value)" />
-  </div>
-
-  <div class="selectableMascots">
-    <ul class="list-unstyled">
-      <li *ngFor="let mascot of selectableMascots()">
-        <div class="mascot-card" (click)="selectMascot(mascot)">
-          <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" class="img-responsive" />
-          <div class="info text-center">
-            <div class="school">{{mascot.school}}</div>
-            <div class="name">{{mascot.name}}</div>
-            <div class="tag label label-default">{{mascot.tag}}</div>
+  <div class="selections">
+    <div class="selectableMascots">
+      <ul class="list-unstyled row">
+        <li *ngFor="let mascot of selectableMascots()">
+          <div class="mascot-card" (click)="selectMascot(mascot)">
+            <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" class="img-responsive" />
+            <div class="info text-center">
+              <div class="school">{{mascot.school}}</div>
+              <div class="name">{{mascot.name}}</div>
+              <div class="tag label label-default">{{mascot.tag}}</div>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="selectedMascots">
-    <div class="sidebar-fixed">
-      Selected Mascots
-      <ol>
-        <li *ngFor="let mascot of selectedMascots">
-          {{mascot.school}} {{mascot.name}}
-          <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
         </li>
-      </ol>
+      </ul>
+    </div>
+
+    <div class="selectedMascots">
+      <div class="sidebar-fixed">
+        Selected Mascots
+        <ol>
+          <li *ngFor="let mascot of selectedMascots">
+            {{mascot.school}} {{mascot.name}}
+            <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 

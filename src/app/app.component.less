@@ -1,37 +1,61 @@
 @import "../../node_modules/bootstrap/less/variables";
 @import "../../node_modules/bootstrap/less/mixins";
 
-.selectedMascots {
-  .make-sm-column(3);
-  .make-lg-column(2);
-  .sidebar-fixed {
-    position: fixed;
-  }
+@selectedMascotsColumns: 2;
+
+.menu {
+  .make-row();
 }
 
-.selectableMascots {
-  .make-sm-column(9);
-  .make-lg-column(10);
-  li {
-    height: 400px;
-    .make-xs-column(6);
-    .make-sm-column(3);
-    .make-lg-column(2);
-    .mascot-card {
-      border: 1px solid black;
-      padding: 5px;
-      .img {
-        .center-block();
+.selections {
+  .make-row();
+
+  .selectedMascots {
+    .make-xs-column(@selectedMascotsColumns);
+    .sidebar-fixed {
+      position: fixed;
+    }
+  }
+
+  .selectableMascots {
+    .make-xs-column(12 - @selectedMascotsColumns);
+    li {
+      display: inline-block;
+      vertical-align: top;
+      padding: 10px;
+
+      /* Small devices (tablets, 768px and up) */
+      @media (min-width: @screen-sm-min) {
+        width: 25%; // 4 per row
       }
-      .info {
-        font-weight: bold;
-        .school .name {
-          font-size: 20px;
+
+      /* Medium devices (desktops, 992px and up) */
+      @media (min-width: @screen-md-min) {
+        width: 20%; // 5 per row
+      }
+
+      /* Large devices (large desktops, 1200px and up) */
+      @media (min-width: @screen-lg-min) {
+        width: 16%; // 6 per row
+      }
+
+      .mascot-card {
+        border: 1px solid black;
+        padding: 5px;
+        .img {
+          .center-block();
         }
-        .tag {
-          font-size: 12px;
+        .info {
+          font-weight: bold;
+          .school .name {
+            font-size: 20px;
+          }
+          .tag {
+            font-size: 12px;
+          }
         }
       }
     }
   }
+
 }
