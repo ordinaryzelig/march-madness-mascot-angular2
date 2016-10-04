@@ -4,6 +4,8 @@ import { MASCOT_DATA } from './mascot-data';
 import { Mascot }      from './mascot';
 import { Tag }         from './tag';
 
+declare var jQuery: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.initYears();
     this.changeYear(this.years[this.years.length - 1]);
+    this.initTagDropdown();
   }
 
   changeYear(year): void {
@@ -87,6 +90,16 @@ export class AppComponent implements OnInit {
     let tagNames = [];
     for (let tag of tags) { tagNames.push(tag.name); }
     return tagNames;
+  }
+
+  private initTagDropdown(): void{
+    jQuery(document).ready(function() {
+      jQuery('.tags .dropdown .dropdown-toggle')
+        .dropdown()
+        // Prevent menu from closing when clicking.
+        .parent().find('.dropdown-menu')
+        .on('click', e => e.stopPropagation());
+    })
   }
 
   // http://www.itsmycodeblog.com/shuffling-a-javascript-array/

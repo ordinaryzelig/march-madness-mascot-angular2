@@ -3,14 +3,20 @@
 </select>
 
 <div class="tags">
-  <ul class="list-unstyled">
-    <li *ngFor="let tag of tags">
-      <label>
-        <input type="checkbox" [(ngModel)]="tag.selected" />
-        {{tag.name}}
-      </label>
-    </li>
-  </ul>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+      Categories
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let tag of tags">
+        <label>
+          <input type="checkbox" [(ngModel)]="tag.selected" />
+          {{tag.name}}
+        </label>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="selectedMascots">
