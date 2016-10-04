@@ -1,7 +1,17 @@
 @import "../../node_modules/bootstrap/less/variables";
 @import "../../node_modules/bootstrap/less/mixins";
 
+.selectedMascots {
+  .make-sm-column(3);
+  .make-lg-column(2);
+  .sidebar-fixed {
+    position: fixed;
+  }
+}
+
 .selectableMascots {
+  .make-sm-column(9);
+  .make-lg-column(10);
   li {
     height: 400px;
     .make-xs-column(6);
