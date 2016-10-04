@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from '../../node_modules/angular-2-dropdown-multiselect/src/multiselect-dropdown';
+import { IMultiSelectOption, IMultiSelectSettings } from '../../node_modules/angular-2-dropdown-multiselect/src/multiselect-dropdown';
 
 import { MASCOT_DATA } from './mascot-data';
 import { Mascot }      from './mascot';
@@ -18,25 +18,6 @@ export class AppComponent implements OnInit {
   years = [];
   selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
-
-  private selectedOptions: number[];
-  private myOptions: IMultiSelectOption[] = [
-    {id: 1, name: 'one'},
-    {id: 2, name: 'two'},
-  ]
-  private mySettings: IMultiSelectSettings = {
-    pullRight: false,
-    enableSearch: true,
-    checkedStyle: 'checkboxes',
-    buttonClasses: 'btn btn-default',
-    selectionLimit: 0,
-    closeOnSelect: false,
-    showCheckAll: true,
-    showUncheckAll: true,
-    dynamicTitleMaxItems: 3,
-    maxHeight: '300px',
-  };
-
 
   ngOnInit(): void {
     this.initYears();
@@ -66,6 +47,21 @@ export class AppComponent implements OnInit {
     return this.mascots.filter(
       mascot => !mascot.selected && tagNames.indexOf(mascot.tag) >= 0
     );
+  }
+
+  /////////////////////////////////
+  // Multiselect
+
+  private selectedTags = [];
+
+  tagSelected(): void {
+    console.log(this.selectedTags);
+  }
+
+  tagOptions(): IMultiSelectOption[] {
+    let options = [];
+    this.tags.forEach((tag, idx) => options.push({id: idx, name: tag.name}))
+    return options;
   }
 
   //////////
@@ -100,8 +96,13 @@ export class AppComponent implements OnInit {
   }
 
   private showableTags(): Tag[] {
-    let selectedTags = this.tags.filter(t => t.selected);
-    return selectedTags.length > 0 ? selectedTags : this.tags;
+    if (this.selectedTags.length == 0) {
+      return this.tags;
+    } else {
+      let array = [];
+      this.selectedTags.forEach(tagIdx => array.push(this.tags[tagIdx]))
+      return array;
+    }
   }
 
   private mapTagNames(tags): string[] {
