@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   years = [];
   selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
+  searchTerm = null;
 
   ngOnInit(): void {
     this.initYears();
@@ -46,8 +47,15 @@ export class AppComponent implements OnInit {
   selectableMascots(): Mascot[] {
     let tagNames = this.mapTagNames(this.showableTags());
     return this.mascots.filter(
-      mascot => !mascot.selected && tagNames.indexOf(mascot.tag) >= 0
+      mascot =>
+        !mascot.selected
+        && tagNames.indexOf(mascot.tag) >= 0
+        && (this.searchTerm ? mascot.matches(this.searchTerm) : true)
     );
+  }
+
+  search(term): void {
+    this.searchTerm = term;
   }
 
   //////////

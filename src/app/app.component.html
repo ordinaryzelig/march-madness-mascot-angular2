@@ -19,6 +19,10 @@
   </div>
 </div>
 
+<div class="search">
+  <input #searchBox placeholder="Search school or mascot" (keyup)="search(searchBox.value)" />
+</div>
+
 <div class="selectedMascots">
   Selected Mascots
   <ol>

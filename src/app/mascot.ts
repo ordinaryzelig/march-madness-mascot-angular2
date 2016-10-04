@@ -14,6 +14,18 @@ export class Mascot {
     return this.underscore(`${this.school}_${this.name}`).toLowerCase() + '.png';
   };
 
+  matches(searchTerm): boolean {
+    return ['school', 'name'].some(
+      attr => {
+        let regex = new RegExp(searchTerm, 'i');
+        return regex.test(this[attr]);
+      }
+    );
+  }
+
+  ///////////////////////////////
+  // private
+
   private underscore(str): string {
     return str
       .replace(/['.]/g, '')
