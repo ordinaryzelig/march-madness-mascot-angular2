@@ -34,7 +34,7 @@
 
 <div id="sidebar">
   <div class="fixed-container">
-    <div class="form-inline">
+    <div id="search-tools" class="form">
       <div class="tags form-group">
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
@@ -59,7 +59,7 @@
     </div>
 
     <div id="selected-mascots">
-      Selected Mascots:
+      Ranks:
       <ol>
         <li *ngFor="let mascot of selectedMascots">
           {{mascot.school}} {{mascot.name}}
