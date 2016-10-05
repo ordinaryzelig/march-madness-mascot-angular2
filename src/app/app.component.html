@@ -15,9 +15,25 @@
   </div>
 </nav>
 
-<div class="menu">
-  <div class="container-fluid">
+<div id="main">
+  <div id="selectable-mascots">
+    <ul class="list-unstyled row">
+      <li *ngFor="let mascot of selectableMascots()">
+        <div class="mascot-card" (click)="selectMascot(mascot)">
+          <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" class="img-responsive" />
+          <div class="info text-center">
+            <div class="school">{{mascot.school}}</div>
+            <div class="name">{{mascot.name}}</div>
+            <div class="tag label label-default">{{mascot.tag}}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
 
+<div id="sidebar">
+  <div class="fixed-container">
     <div class="form-inline">
       <div class="tags form-group">
         <div class="dropdown">
@@ -40,29 +56,9 @@
         <label for="search-box" class="sr-only">Search</label>
         <input id="search-box" #searchBox placeholder="Search" (keyup)="search(searchBox.value)" class="form-control" />
       </div>
-
     </div>
-  </div>
-</div>
 
-<div class="selections">
-  <div class="selectableMascots">
-    <ul class="list-unstyled row">
-      <li *ngFor="let mascot of selectableMascots()">
-        <div class="mascot-card" (click)="selectMascot(mascot)">
-          <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" class="img-responsive" />
-          <div class="info text-center">
-            <div class="school">{{mascot.school}}</div>
-            <div class="name">{{mascot.name}}</div>
-            <div class="tag label label-default">{{mascot.tag}}</div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="selectedMascots">
-    <div id="sidebar" class="sidebar-fixed">
+    <div class="selected-mascots">
       Selected Mascots
       <ol>
         <li *ngFor="let mascot of selectedMascots">

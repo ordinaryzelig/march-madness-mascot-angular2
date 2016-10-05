@@ -1,59 +1,66 @@
 @import "../../node_modules/bootstrap/less/variables";
 @import "../../node_modules/bootstrap/less/mixins";
 
-@selectedMascotsColumns: 2;
+////////////////////////////////////
+// Layout
 
-.selections {
-  .make-row();
+#main {
+  .make-xs-column(10);
+}
 
-  .selectedMascots {
-    .make-xs-column(@selectedMascotsColumns);
-    .sidebar-fixed {
-      position: fixed;
-    }
+#sidebar {
+  .make-xs-column(2);
+  .fixed-container {
+    position: fixed;
+  }
+  padding: 5px;
+}
+
+// end Layout.
+////////////////////////////////////
+
+#selectable-mascots li {
+  display: inline-block;
+  vertical-align: top;
+  padding: 20px;
+
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width: @screen-sm-min) {
+    width: 25%; // 4 per row
   }
 
-  .selectableMascots {
-    .make-xs-column(12 - @selectedMascotsColumns);
-    li {
-      display: inline-block;
-      vertical-align: top;
-      padding: 20px;
+  /* Medium devices (desktops, 992px and up) */
+  @media (min-width: @screen-md-min) {
+    width: 20%; // 5 per row
+  }
 
-      /* Small devices (tablets, 768px and up) */
-      @media (min-width: @screen-sm-min) {
-        width: 25%; // 4 per row
+  /* Large devices (large desktops, 1200px and up) */
+  @media (min-width: @screen-lg-min) {
+    width: 16%; // 6 per row
+  }
+
+  .mascot-card {
+    border: 1px solid black;
+    background-color: white;
+    padding: 5px;
+    cursor: pointer;
+    .img {
+      .center-block();
+    }
+    .info {
+      font-weight: bold;
+      .school .name {
+        font-size: 20px;
       }
-
-      /* Medium devices (desktops, 992px and up) */
-      @media (min-width: @screen-md-min) {
-        width: 20%; // 5 per row
-      }
-
-      /* Large devices (large desktops, 1200px and up) */
-      @media (min-width: @screen-lg-min) {
-        width: 16%; // 6 per row
-      }
-
-      .mascot-card {
-        border: 1px solid black;
-        background-color: white;
-        padding: 5px;
-        cursor: pointer;
-        .img {
-          .center-block();
-        }
-        .info {
-          font-weight: bold;
-          .school .name {
-            font-size: 20px;
-          }
-          .tag {
-            font-size: 12px;
-          }
-        }
+      .tag {
+        font-size: 12px;
       }
     }
   }
+}
 
+#sidebar {
+  .form-group {
+    padding: 5px;
+  }
 }
