@@ -5,37 +5,43 @@
         March Madness Masc<img alt="Brand" src="/assets/images/basketball.png" />ts
       </a>
     </div>
+
+    <form class="navbar-form navbar-right">
+      <label for="year-select" class="sr-only">Select Year</label>
+      <select id="year-select" (change)="changeYear($event.target.value)" class="form-control">
+        <option *ngFor="let year of years" [value]="year" [selected]="year == selectedYear">{{year}}</option>
+      </select>
+    </form>
   </div>
 </nav>
 
 <div class="menu">
   <div class="container-fluid">
 
-    <select (change)="changeYear($event.target.value)">
-      <option *ngFor="let year of years" [value]="year" [selected]="year == selectedYear">{{year}}</option>
-    </select>
-
-    <div class="tags">
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-          Categories
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li *ngFor="let tag of tags">
-            <label>
-              <input type="checkbox" [(ngModel)]="tag.selected" />
-              {{tag.name}}
-            </label>
-          </li>
-        </ul>
+    <div class="form-inline">
+      <div class="tags form-group">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            Categories
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let tag of tags">
+              <label>
+                <input type="checkbox" [(ngModel)]="tag.selected" class="form-control" />
+                {{tag.name}}
+              </label>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="search">
-      <input #searchBox placeholder="Search" (keyup)="search(searchBox.value)" />
-    </div>
+      <div class="search form-group">
+        <label for="search-box" class="sr-only">Search</label>
+        <input id="search-box" #searchBox placeholder="Search" (keyup)="search(searchBox.value)" class="form-control" />
+      </div>
 
+    </div>
   </div>
 </div>
 
@@ -56,7 +62,7 @@
   </div>
 
   <div class="selectedMascots">
-    <div class="sidebar-fixed">
+    <div id="sidebar" class="sidebar-fixed">
       Selected Mascots
       <ol>
         <li *ngFor="let mascot of selectedMascots">
