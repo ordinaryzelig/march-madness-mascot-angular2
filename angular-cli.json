@@ -15,7 +15,8 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.less",
+        "assets/stylesheets/styles.less",
+        "assets/stylesheets/layout.less",
         "../node_modules/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [
