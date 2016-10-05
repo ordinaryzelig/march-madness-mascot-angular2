@@ -58,6 +58,10 @@ export class AppComponent implements OnInit {
     this.searchTerm = term;
   }
 
+  submitPicks(): void {
+    //picksService.submit(this.selectedMascots);
+  }
+
   //////////
   // PRIVATE
 

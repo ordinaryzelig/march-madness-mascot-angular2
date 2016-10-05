@@ -1,5 +1,6 @@
 @import "../../node_modules/bootstrap/less/variables";
 @import "../../node_modules/bootstrap/less/mixins";
+@import "../../node_modules/bootstrap/less/grid";
 
 ////////////////////////////////////
 // Layout
@@ -14,6 +15,12 @@
     position: fixed;
   }
   padding: 5px;
+}
+
+#submit-picks {
+  .container-fluid();
+  .make-xs-column(4);
+  .make-xs-column-offset(4);
 }
 
 // end Layout.
@@ -73,4 +80,8 @@
       }
     }
   }
+}
+
+#submit-picks {
+  background-color: #ddd;
 }

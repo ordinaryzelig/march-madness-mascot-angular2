@@ -16,7 +16,7 @@
 </nav>
 
 <div id="main">
-  <div id="selectable-mascots">
+  <div id="selectable-mascots" *ngIf="selectableMascots().length > 0">
     <ul class="list-unstyled row">
       <li *ngFor="let mascot of selectableMascots()">
         <div class="mascot-card" (click)="selectMascot(mascot)">
@@ -29,6 +29,22 @@
         </div>
       </li>
     </ul>
+  </div>
+
+  <div *ngIf="selectableMascots().length == 0" id="submit-picks">
+    <form>
+      <h3>Almost done! I just need to know who made these awesome picks.</h3>
+      <div class="form-group">
+        <label for="submit-picks-name">Name</label>
+        <input type="text" name="submit-picks-name" id="submit-picks-name" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="submit-picks-email">Email</label>
+        <span id="email-optional" class="help-block">(If you want to send yourself a copy)</span>
+        <input type="text" email="submit-picks-email" id="submit-picks-email" class="form-control" aria-describedby="email-optional" />
+      </div>
+      <button type="submit" class="btn btn-info" (click)="submitPicks()">Send to Jared!</button>
+    </form>
   </div>
 </div>
 
