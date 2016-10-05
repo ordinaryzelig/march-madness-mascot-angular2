@@ -5,11 +5,11 @@
 // Layout
 
 #main {
-  .make-xs-column(10);
+  .make-xs-column(9);
 }
 
 #sidebar {
-  .make-xs-column(2);
+  .make-xs-column(3);
   .fixed-container {
     position: fixed;
   }
@@ -29,14 +29,9 @@
     width: 25%; // 4 per row
   }
 
-  /* Medium devices (desktops, 992px and up) */
-  @media (min-width: @screen-md-min) {
-    width: 20%; // 5 per row
-  }
-
   /* Large devices (large desktops, 1200px and up) */
   @media (min-width: @screen-lg-min) {
-    width: 16%; // 6 per row
+    width: 20%; // 5 per row
   }
 
   .mascot-card {
@@ -60,6 +55,16 @@
 }
 
 #sidebar {
+  .fixed-container {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    #selected-mascots {
+      color: white;
+    }
+  }
+
   .form-group {
     padding: 5px;
   }
