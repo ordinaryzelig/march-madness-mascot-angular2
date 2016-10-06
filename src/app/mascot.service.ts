@@ -11,4 +11,10 @@ export class MascotService {
     }
     return mascots;
   }
+
+  eligibleYears(): number[] {
+    let years = [];
+    for (let year in MASCOT_DATA) { years.push(year); }
+    return years;
+  }
 }

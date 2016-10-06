@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
   // PRIVATE
 
   private initYears(): void {
-    for (let year in MASCOT_DATA) { this.years.push(year); }
+    this.years = this.mascotService.eligibleYears();
   }
 
   private initMascots(): void {
