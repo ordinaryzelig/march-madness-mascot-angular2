@@ -2,8 +2,8 @@ import { Mascot } from './mascot';
 import { Tag }    from './tag';
 
 export class Entry {
-  mascots = [];
-  tags = [];
+  mascots: Mascot[];
+  tags: Tag[];
 
   constructor(mascots) {
     this.mascots = mascots;
@@ -15,11 +15,13 @@ export class Entry {
   }
 
   selectableMascots(): Mascot[] {
-    let tagNames = this.mapTagNames(this.showableTags());
     return this.mascots.filter(
       mascot =>
         !mascot.selected
-        && tagNames.indexOf(mascot.tag) >= 0
+        && (
+          mascot.tag.selected
+          || this.selectedTags().length == 0
+        )
     );
   }
 
@@ -39,25 +41,27 @@ export class Entry {
   // Private
 
   private initTags(): void {
-    let tagNames = new Set([]);
-    for (let mascot of this.mascots) { tagNames.add(mascot.tag); }
+    let allTags = [];
+    for (let mascot of this.mascots) { allTags.push(mascot.tag); }
 
-    tagNames.forEach(tagName => {
-      this.tags.push(new Tag(tagName));
-    });
+    this.tags = Array.from(new Set(allTags));
 
     this.tags.sort((a, b) => {
       if (a.name < b.name) { return -1 };
       if (a.name > b.name) { return 1 };
       return 0;
     } );
+
+  }
+
+  private selectedTags(): Tag[] {
+    return this.tags.filter(t => t.selected);
   }
 
   private showableTags(): Tag[] {
-    let selectedTags = this.tags.filter(t => t.selected);
     return(
-      selectedTags.length > 0
-        ? selectedTags 
+      this.selectedTags().length > 0
+        ? this.selectedTags ()
         : this.tags
     );
   }

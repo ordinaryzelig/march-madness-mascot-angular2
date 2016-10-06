@@ -1,8 +1,11 @@
 import { MASCOT_DATA } from './mascot-data.ts';
 import { Mascot }      from './mascot.ts';
+import { TagSet }      from './tag-set.ts';
 import { Entry  }      from './entry.ts';
 
 export class MascotService {
+  tagSet = new TagSet();
+
   eligibleYears(): number[] {
     let years = [];
     for (let year in MASCOT_DATA) { years.push(year); }
@@ -19,7 +22,11 @@ export class MascotService {
   private mascotsForYear(year): Mascot[] {
     let mascots = [];
     for (let atts of MASCOT_DATA[year]) {
-      mascots.push(new Mascot(atts));
+      mascots.push(new Mascot({
+        school: atts.school,
+        name: atts.name,
+        tag: this.tagSet.existingOrNew(atts.tag),
+      }));
     }
     return mascots;
   }

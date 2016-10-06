@@ -1,7 +1,9 @@
+import { Tag } from './tag';
+
 export class Mascot {
   name: string;
   school: string;
-  tag: string;
+  tag: Tag;
   selected: boolean;
 
   constructor(atts) {
