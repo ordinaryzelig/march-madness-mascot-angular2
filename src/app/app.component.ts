@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   selectedMascots(): Mascot[] {
-    return this.entry.selected;
+    return this.entry.selectedMascots();
   }
 
   selectMascot(mascot): void {

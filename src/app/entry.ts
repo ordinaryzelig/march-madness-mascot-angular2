@@ -3,12 +3,15 @@ import { Tag }    from './tag';
 
 export class Entry {
   mascots = [];
-  selected = [];
   tags = [];
 
   constructor(mascots) {
     this.mascots = mascots;
     this.initTags();
+  }
+
+  selectedMascots(): Mascot[] {
+    return this.mascots.filter(mascot => mascot.selected);
   }
 
   selectableMascots(): Mascot[] {
@@ -21,18 +24,15 @@ export class Entry {
   }
 
   select(mascot): void {
-    this.selected.push(mascot);
     mascot.selected = true;
   }
 
   unselect(unselectedMascot): void {
     unselectedMascot.selected = false;
-    this.selected =
-      this.selected.filter(mascot => mascot.school != unselectedMascot.school);
   }
 
   isComplete(): boolean {
-    return this.selected.length == this.mascots.length;
+    return this.selectedMascots().length == this.mascots.length;
   }
 
   /////////////////////////////////
