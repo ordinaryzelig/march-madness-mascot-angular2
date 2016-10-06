@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
   tags = [];
   years = [];
   selectedYear = null;
-  selectedMascots = [];
   mascotImagePath = 'assets/images/mascots/';
   searchTerm = null;
 
@@ -33,19 +32,19 @@ export class AppComponent implements OnInit {
   changeYear(year): void {
     this.selectedYear = year;
     this.initMascots();
-    this.selectedMascots = [];
     this.initTags();
   }
 
-  selectMascot(mascot): void {
-    this.selectedMascots.push(mascot);
-    mascot.selected = true;
+  selectedMascots(): Mascot[] {
+    return this.mascotService.selected;
   }
 
-  unselectMascot(unselectedMascot): void {
-    unselectedMascot.selected = false;
-    this.selectedMascots =
-      this.selectedMascots.filter(mascot => mascot.school != unselectedMascot.school)
+  selectMascot(mascot): void {
+    this.mascotService.select(mascot);
+  }
+
+  unselectMascot(mascot): void {
+    this.mascotService.unselect(mascot);
   }
 
   selectableMascots(): Mascot[] {
@@ -63,7 +62,7 @@ export class AppComponent implements OnInit {
   }
 
   allMascotsSelected(): boolean {
-    return this.selectedMascots.length == this.mascots.length;
+    return this.selectedMascots().length == this.mascots.length;
   }
 
   submitPicks(): void {
@@ -78,6 +77,7 @@ export class AppComponent implements OnInit {
   }
 
   private initMascots(): void {
+    this.mascotService.clearSelected();
     this.mascots = this.shuffle(
       this.mascotService.mascotsForYear(this.selectedYear)
     );

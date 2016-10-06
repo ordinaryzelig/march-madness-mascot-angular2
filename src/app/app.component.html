@@ -77,7 +77,7 @@
     <div id="selected-mascots">
       Ranks:
       <ol>
-        <li *ngFor="let mascot of selectedMascots">
+        <li *ngFor="let mascot of selectedMascots()">
           {{mascot.school}} {{mascot.name}}
           <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
         </li>
