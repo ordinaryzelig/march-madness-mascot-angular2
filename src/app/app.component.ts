@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MASCOT_DATA }   from './mascot-data';
 import { Mascot }        from './mascot';
 import { Tag }           from './tag';
 import { MascotService } from './mascot.service.ts';
