@@ -15,7 +15,6 @@ declare var jQuery: any;
 
 export class AppComponent implements OnInit {
   entry = null;
-  mascots = [];
   years = [];
   selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
@@ -77,7 +76,6 @@ export class AppComponent implements OnInit {
 
   private initEntry(): void {
     this.entry = this.mascotService.entryForYear(this.selectedYear);
-    this.mascots = this.entry.mascots;
   }
 
   private initTagDropdown(): void{
