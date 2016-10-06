@@ -11,6 +11,15 @@ export class Entry {
     this.initTags();
   }
 
+  selectableMascots(): Mascot[] {
+    let tagNames = this.mapTagNames(this.showableTags());
+    return this.mascots.filter(
+      mascot =>
+        !mascot.selected
+        && tagNames.indexOf(mascot.tag) >= 0
+    );
+  }
+
   select(mascot): void {
     this.selected.push(mascot);
     mascot.selected = true;
@@ -20,6 +29,10 @@ export class Entry {
     unselectedMascot.selected = false;
     this.selected =
       this.selected.filter(mascot => mascot.school != unselectedMascot.school);
+  }
+
+  isComplete(): boolean {
+    return this.selected.length == this.mascots.length;
   }
 
   /////////////////////////////////
@@ -38,5 +51,20 @@ export class Entry {
       if (a.name > b.name) { return 1 };
       return 0;
     } );
+  }
+
+  private showableTags(): Tag[] {
+    let selectedTags = this.tags.filter(t => t.selected);
+    return(
+      selectedTags.length > 0
+        ? selectedTags 
+        : this.tags
+    );
+  }
+
+  private mapTagNames(tags): string[] {
+    let tagNames = [];
+    for (let tag of tags) { tagNames.push(tag.name); }
+    return tagNames;
   }
 }

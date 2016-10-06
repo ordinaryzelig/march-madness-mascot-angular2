@@ -51,12 +51,8 @@ export class AppComponent implements OnInit {
   }
 
   selectableMascots(): Mascot[] {
-    let tagNames = this.mapTagNames(this.showableTags());
-    return this.mascots.filter(
-      mascot =>
-        !mascot.selected
-        && tagNames.indexOf(mascot.tag) >= 0
-        && (this.searchTerm ? mascot.matches(this.searchTerm) : true)
+    return this.entry.selectableMascots().filter(
+      mascot => this.searchTerm ? mascot.matches(this.searchTerm) : true
     );
   }
 
@@ -64,8 +60,8 @@ export class AppComponent implements OnInit {
     this.searchTerm = term;
   }
 
-  allMascotsSelected(): boolean {
-    return this.selectedMascots().length == this.mascots.length;
+  entryIsComplete(): boolean {
+    return this.entry.isComplete();
   }
 
   submitPicks(): void {
@@ -82,17 +78,6 @@ export class AppComponent implements OnInit {
   private initEntry(): void {
     this.entry = this.mascotService.entryForYear(this.selectedYear);
     this.mascots = this.entry.mascots;
-  }
-
-  private showableTags(): Tag[] {
-    let selectedTags = this.tags().filter(t => t.selected);
-    return selectedTags.length > 0 ? selectedTags : this.tags();
-  }
-
-  private mapTagNames(tags): string[] {
-    let tagNames = [];
-    for (let tag of tags) { tagNames.push(tag.name); }
-    return tagNames;
   }
 
   private initTagDropdown(): void{

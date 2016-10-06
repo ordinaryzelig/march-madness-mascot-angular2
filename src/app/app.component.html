@@ -16,7 +16,7 @@
 </nav>
 
 <div id="main">
-  <div id="selectable-mascots" *ngIf="!allMascotsSelected()">
+  <div id="selectable-mascots" *ngIf="!entryIsComplete()">
     <ul class="list-unstyled row">
       <li *ngFor="let mascot of selectableMascots()">
         <div class="mascot-card" (click)="selectMascot(mascot)">
@@ -31,7 +31,7 @@
     </ul>
   </div>
 
-  <div *ngIf="allMascotsSelected()" id="submit-picks">
+  <div *ngIf="entryIsComplete()" id="submit-picks">
     <form>
       <h3>Almost done! I just need to know who made these awesome picks.</h3>
       <div class="form-group">
