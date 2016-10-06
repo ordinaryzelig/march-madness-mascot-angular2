@@ -62,6 +62,10 @@ export class AppComponent implements OnInit {
     this.searchTerm = term;
   }
 
+  allMascotsSelected(): boolean {
+    return this.selectedMascots.length == this.mascots.length;
+  }
+
   submitPicks(): void {
     //picksService.submit(this.selectedMascots);
   }
