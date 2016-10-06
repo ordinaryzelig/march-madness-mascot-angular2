@@ -58,7 +58,7 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li *ngFor="let tag of tags">
+            <li *ngFor="let tag of tags()">
               <label>
                 <input type="checkbox" [(ngModel)]="tag.selected" />
                 {{tag.name}}

@@ -16,7 +16,6 @@ declare var jQuery: any;
 export class AppComponent implements OnInit {
   entry = null;
   mascots = [];
-  tags = [];
   years = [];
   selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
@@ -33,7 +32,10 @@ export class AppComponent implements OnInit {
   changeYear(year): void {
     this.selectedYear = year;
     this.initEntry();
-    this.initTags();
+  }
+
+  tags(): Tag[] {
+    return this.entry.tags;
   }
 
   selectedMascots(): Mascot[] {
@@ -82,25 +84,9 @@ export class AppComponent implements OnInit {
     this.mascots = this.entry.mascots;
   }
 
-  private initTags(): void {
-    this.tags = [];
-    let tagNames = new Set([]);
-    for (let mascot of this.mascots) { tagNames.add(mascot.tag); }
-
-    tagNames.forEach(tagName => {
-      this.tags.push(new Tag(tagName));
-    });
-
-    this.tags.sort((a, b) => {
-      if (a.name < b.name) { return -1 };
-      if (a.name > b.name) { return 1 };
-      return 0;
-    } );
-  }
-
   private showableTags(): Tag[] {
-    let selectedTags = this.tags.filter(t => t.selected);
-    return selectedTags.length > 0 ? selectedTags : this.tags;
+    let selectedTags = this.tags().filter(t => t.selected);
+    return selectedTags.length > 0 ? selectedTags : this.tags();
   }
 
   private mapTagNames(tags): string[] {
