@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   changeYear(year): void {
     this.selectedYear = year;
     this.initMascots();
+    this.selectedMascots = [];
     this.initTags();
   }
 
