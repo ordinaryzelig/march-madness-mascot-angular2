@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MASCOT_DATA } from './mascot-data';
-import { Mascot }      from './mascot';
-import { Tag }         from './tag';
+import { MASCOT_DATA }   from './mascot-data';
+import { Mascot }        from './mascot';
+import { Tag }           from './tag';
+import { MascotService } from './mascot.service.ts';
 
 declare var jQuery: any;
 
@@ -10,6 +11,7 @@ declare var jQuery: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
+  providers: [MascotService],
 })
 
 export class AppComponent implements OnInit {
@@ -20,6 +22,8 @@ export class AppComponent implements OnInit {
   selectedMascots = [];
   mascotImagePath = 'assets/images/mascots/';
   searchTerm = null;
+
+  constructor(private mascotService: MascotService) {}
 
   ngOnInit(): void {
     this.initYears();
@@ -70,11 +74,9 @@ export class AppComponent implements OnInit {
   }
 
   private initMascots(): void {
-    this.mascots = [];
-    for (let atts of MASCOT_DATA[this.selectedYear]) {
-      this.mascots.push(new Mascot(atts));
-    }
-    this.shuffle(this.mascots);
+    this.mascots = this.shuffle(
+      this.mascotService.mascotsForYear(this.selectedYear)
+    );
   }
 
   private initTags(): void {
