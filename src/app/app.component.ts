@@ -14,6 +14,7 @@ declare var jQuery: any;
 })
 
 export class AppComponent implements OnInit {
+  entry = null;
   mascots = [];
   tags = [];
   years = [];
@@ -31,20 +32,20 @@ export class AppComponent implements OnInit {
 
   changeYear(year): void {
     this.selectedYear = year;
-    this.initMascots();
+    this.initEntry();
     this.initTags();
   }
 
   selectedMascots(): Mascot[] {
-    return this.mascotService.selected;
+    return this.entry.selected;
   }
 
   selectMascot(mascot): void {
-    this.mascotService.select(mascot);
+    this.entry.select(mascot);
   }
 
   unselectMascot(mascot): void {
-    this.mascotService.unselect(mascot);
+    this.entry.unselect(mascot);
   }
 
   selectableMascots(): Mascot[] {
@@ -76,11 +77,9 @@ export class AppComponent implements OnInit {
     this.years = this.mascotService.eligibleYears();
   }
 
-  private initMascots(): void {
-    this.mascotService.clearSelected();
-    this.mascots = this.shuffle(
-      this.mascotService.mascotsForYear(this.selectedYear)
-    );
+  private initEntry(): void {
+    this.entry = this.mascotService.entryForYear(this.selectedYear);
+    this.mascots = this.entry.mascots;
   }
 
   private initTags(): void {
@@ -118,26 +117,5 @@ export class AppComponent implements OnInit {
         .parent().find('.dropdown-menu')
         .on('click', e => e.stopPropagation());
     })
-  }
-
-  // http://www.itsmycodeblog.com/shuffling-a-javascript-array/
-  // I miss ruby.
-  private shuffle(array): any[] {
-    let currentIndex = array.length, temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
   }
 }
