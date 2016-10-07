@@ -25,11 +25,11 @@ export class Entry {
     );
   }
 
-  select(mascot): void {
+  select(mascot) {
     mascot.selected = true;
   }
 
-  unselect(unselectedMascot): void {
+  unselect(unselectedMascot) {
     unselectedMascot.selected = false;
   }
 
@@ -40,7 +40,7 @@ export class Entry {
   /////////////////////////////////
   // Private
 
-  private initTags(): void {
+  private initTags() {
     let allTags = [];
     for (let mascot of this.mascots) { allTags.push(mascot.tag); }
 

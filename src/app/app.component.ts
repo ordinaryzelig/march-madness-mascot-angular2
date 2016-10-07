@@ -30,14 +30,14 @@ export class AppComponent implements OnInit {
     private entryService: EntryService,
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.initYears();
     this.changeYear(this.years[this.years.length - 1]);
     this.initTagDropdown();
     this.entry.selectableMascots().forEach(mascot => mascot.selected = true);
   }
 
-  changeYear(year): void {
+  changeYear(year) {
     this.selectedYear = year;
     this.initEntry();
   }
@@ -50,11 +50,11 @@ export class AppComponent implements OnInit {
     return this.entry.selectedMascots();
   }
 
-  selectMascot(mascot): void {
+  selectMascot(mascot) {
     this.entry.select(mascot);
   }
 
-  unselectMascot(mascot): void {
+  unselectMascot(mascot) {
     this.entry.unselect(mascot);
   }
 
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  search(term): void {
+  search(term) {
     this.searchTerm = term;
   }
 
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
     return this.entry.isComplete();
   }
 
-  submitPicks(): void {
+  submitPicks() {
     this.entryService.submit(this.entry)
     .subscribe(
       result => this.picksSubmittedSuccessfully = result,
@@ -83,15 +83,15 @@ export class AppComponent implements OnInit {
   //////////
   // PRIVATE
 
-  private initYears(): void {
+  private initYears() {
     this.years = this.mascotService.eligibleYears();
   }
 
-  private initEntry(): void {
+  private initEntry() {
     this.entry = this.mascotService.entryForYear(this.selectedYear);
   }
 
-  private initTagDropdown(): void{
+  private initTagDropdown() {
     jQuery(document).ready(function() {
       jQuery('.tags .dropdown .dropdown-toggle')
         .dropdown()
