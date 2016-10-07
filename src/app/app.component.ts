@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Mascot }        from './mascot';
 import { Tag }           from './tag';
 import { MascotService } from './mascot.service.ts';
+import { EntryService }  from './entry.service.ts';
 
 declare var jQuery: any;
 
@@ -10,7 +11,10 @@ declare var jQuery: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [MascotService],
+  providers: [
+    MascotService,
+    EntryService,
+  ],
 })
 
 export class AppComponent implements OnInit {
@@ -19,13 +23,18 @@ export class AppComponent implements OnInit {
   selectedYear = null;
   mascotImagePath = 'assets/images/mascots/';
   searchTerm = null;
+  picksSubmittedSuccessfully = null;
 
-  constructor(private mascotService: MascotService) {}
+  constructor(
+    private mascotService: MascotService,
+    private entryService: EntryService,
+  ) {}
 
   ngOnInit(): void {
     this.initYears();
     this.changeYear(this.years[this.years.length - 1]);
     this.initTagDropdown();
+    this.entry.selectableMascots().forEach(mascot => mascot.selected = true);
   }
 
   changeYear(year): void {
@@ -64,7 +73,11 @@ export class AppComponent implements OnInit {
   }
 
   submitPicks(): void {
-    //picksService.submit(this.selectedMascots);
+    this.entryService.submit(this.entry)
+    .subscribe(
+      result => this.picksSubmittedSuccessfully = result,
+      error => this.failedSubmittingPicks(error),
+    );
   }
 
   //////////
@@ -86,5 +99,9 @@ export class AppComponent implements OnInit {
         .parent().find('.dropdown-menu')
         .on('click', e => e.stopPropagation());
     })
+  }
+
+  private failedSubmittingPicks(error: any) {
+    console.log(error);
   }
 }
