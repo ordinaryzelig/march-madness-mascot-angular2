@@ -6,14 +6,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EntryService {
-  entriesUrl = '/entries';
+  entriesUrl = 'http://localhost:2300/entries';
 
   constructor(private http: Http) {}
 
   submit(entry): Observable<boolean> {
-    let body = JSON.stringify({
-      mascots: entry.selectedMascots(),
-    });
+    let body = JSON.stringify(entry);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 

@@ -36,12 +36,12 @@
       <h3>Almost done! I just need to know who made these awesome picks.</h3>
       <div class="form-group">
         <label for="submit-picks-name">Name</label>
-        <input type="text" name="submit-picks-name" id="submit-picks-name" class="form-control" />
+        <input [(ngModel)]="entry.name" name="submit-picks-name" id="submit-picks-name" class="form-control" />
       </div>
       <div class="form-group">
         <label for="submit-picks-email">Email</label>
         <span id="email-optional" class="help-block">(If you want to send yourself a copy)</span>
-        <input type="text" email="submit-picks-email" id="submit-picks-email" class="form-control" aria-describedby="email-optional" />
+        <input [(ngModel)]="entry.email" name="submit-picks-email" id="submit-picks-email" class="form-control" aria-describedby="email-optional" />
       </div>
       <button type="submit" class="btn btn-info" (click)="submitPicks()">Send to Jared!</button>
     </form>
