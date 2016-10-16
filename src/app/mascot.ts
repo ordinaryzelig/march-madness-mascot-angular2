@@ -25,6 +25,8 @@ export class Mascot {
     );
   }
 
+  id(): string { return this.underscore(`${this.school}_${this.name}`); }
+
   ///////////////////////////////
   // private
 
