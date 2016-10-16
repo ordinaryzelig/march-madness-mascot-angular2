@@ -25,10 +25,10 @@ describe('App: MarchMadnessMascotsAngular2', () => {
     this.app = this.fixture.debugElement.componentInstance;
   });
 
-  this.findMascotEle = (mascot) => {
+  this.findSelectable = (mascot) => {
     return this.fixture.debugElement.query(By.css(`#mascot_${mascot.id()}`));
   }
-  this.findRankEle = (mascot) => {
+  this.findRank = (mascot) => {
     return this.fixture.debugElement.query(By.css(`#rank_${mascot.id()}`));
   }
 
@@ -52,13 +52,28 @@ describe('App: MarchMadnessMascotsAngular2', () => {
   it('should select a mascot, remove it from the list of selectables, and add it to the ranks', () => {
     let mascot = this.app.selectableMascots()[0];
 
-    expect(this.findMascotEle(mascot)).toBeTruthy();
-    expect(this.findRankEle(mascot)).toBeNull();
+    expect(this.findSelectable(mascot)).toBeTruthy();
+    expect(this.findRank(mascot)).toBeNull();
 
     mascot.selected = true;
     this.fixture.detectChanges();
 
-    expect(this.findMascotEle(mascot)).toBeNull();
-    expect(this.findRankEle(mascot)).toBeTruthy();
+    expect(this.findSelectable(mascot)).toBeNull();
+    expect(this.findRank(mascot)).toBeTruthy();
+  });
+
+  it('should unselect a mascot, remove it from the ranks, and add it back to selectables', () => {
+    let mascot = this.app.selectableMascots()[0];
+    mascot.selected = true;
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeNull();
+    expect(this.findRank(mascot)).toBeTruthy();
+
+    mascot.selected = false;
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeTruthy();
+    expect(this.findRank(mascot)).toBeNull();
   });
 });
