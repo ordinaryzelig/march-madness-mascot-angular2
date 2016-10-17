@@ -80,6 +80,10 @@ export class AppComponent implements OnInit {
     );
   }
 
+  selectRestRandomly() {
+    this.entry.selectableMascots().forEach(mascot => mascot.selected = true);
+  }
+
   //////////
   // PRIVATE
 

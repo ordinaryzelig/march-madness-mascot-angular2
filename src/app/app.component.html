@@ -82,6 +82,9 @@
           <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
         </li>
       </ol>
+      <div *ngIf="!entryIsComplete()">
+        <a (click)="selectRestRandomly()">Finish it for me</a>
+      </div>
     </div>
   </div>
 </div>

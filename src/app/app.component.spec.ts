@@ -124,4 +124,9 @@ describe('App: MarchMadnessMascotsAngular2', () => {
     this.fixture.detectChanges();
     expect(this.findSelectable(mascot)).toBeTruthy();
   });
+
+  it('chooses the rest of the mascots for the user in random order', () => {
+    this.app.selectRestRandomly();
+    expect(this.app.entryIsComplete()).toEqual(true);
+  });
 });
