@@ -76,4 +76,39 @@ describe('App: MarchMadnessMascotsAngular2', () => {
     expect(this.findSelectable(mascot)).toBeTruthy();
     expect(this.findRank(mascot)).toBeNull();
   });
+
+  it('should filter mascots with search by school and name', () => {
+    let mascot = this.app.selectableMascots()[0];
+
+    // By school.
+    this.app.searchTerm = mascot.school;
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeTruthy();
+
+    this.app.searchTerm = 'doesnotexist';
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeNull();
+
+    // By mascot name.
+    this.app.searchTerm = mascot.name;
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeTruthy();
+
+    this.app.searchTerm = 'doesnotexist';
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeNull();
+  });
+
+  it('should not include a mascot that is selected even if search matches', () => {
+    let mascot = this.app.selectableMascots()[0];
+    mascot.selected = true;
+    this.app.searchTerm = mascot.school;
+    this.fixture.detectChanges();
+
+    expect(this.findSelectable(mascot)).toBeNull();
+  });
 });
