@@ -20,7 +20,7 @@
     <ul class="list-unstyled row">
       <li *ngFor="let mascot of selectableMascots()" attr.id="mascot_{{mascot.id()}}">
         <div class="mascot mascot-card" (click)="selectMascot(mascot)">
-          <img src="{{mascotImagePath}}{{mascot.imageFileName()}}" class="img-responsive" />
+          <img src="{{mascotImagePath}}{{mascot.imageFileName}}" class="img-responsive" />
           <div class="info text-center">
             <div class="school">{{mascot.school}}</div>
             <div class="name">{{mascot.name}}</div>

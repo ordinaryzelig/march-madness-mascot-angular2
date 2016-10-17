@@ -5,16 +5,14 @@ export class Mascot {
   school: string;
   tag: Tag;
   selected: boolean;
+  imageFileName: string;
 
   constructor(atts) {
     for (let attr of ['school', 'name', 'tag']) {
       this[attr] = atts[attr];
     }
+    this.imageFileName = this.generateImageFileName();
   }
-
-  imageFileName(): string {
-    return this.underscore(`${this.school}_${this.name}`).toLowerCase() + '.png';
-  };
 
   matches(searchTerm): boolean {
     return ['school', 'name'].some(
@@ -29,6 +27,10 @@ export class Mascot {
 
   ///////////////////////////////
   // private
+
+  private generateImageFileName(): string {
+    return this.underscore(`${this.school}_${this.name}`).toLowerCase() + '.png';
+  };
 
   private underscore(str): string {
     return str
