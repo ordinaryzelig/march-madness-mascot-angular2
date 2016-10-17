@@ -15,13 +15,12 @@ export class Entry {
   }
 
   selectableMascots(): Mascot[] {
-    return this.mascots.filter(
-      mascot =>
-        !mascot.selected
-        && (
-          mascot.tag.selected
-          || this.selectedTags().length == 0
-        )
+    return this.mascots.filter(mascot =>
+      !mascot.selected
+      && (
+        mascot.tag.selected
+        || this.selectedTags().length == 0
+      )
     );
   }
 
