@@ -58,14 +58,6 @@ export class Entry {
     return this.tags.filter(t => t.selected);
   }
 
-  private showableTags(): Tag[] {
-    return(
-      this.selectedTags().length > 0
-        ? this.selectedTags ()
-        : this.tags
-    );
-  }
-
   private mapTagNames(tags): string[] {
     let tagNames = [];
     for (let tag of tags) { tagNames.push(tag.name); }
