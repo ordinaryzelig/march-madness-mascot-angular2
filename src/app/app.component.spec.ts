@@ -111,4 +111,17 @@ describe('App: MarchMadnessMascotsAngular2', () => {
 
     expect(this.findSelectable(mascot)).toBeNull();
   });
+
+  it('filters mascots by tag', () => {
+    let mascot = this.app.selectableMascots()[0];
+    let otherTag = this.app.tags().filter((tag) => tag != mascot.tag)[0]
+
+    otherTag.selected = true;
+    this.fixture.detectChanges();
+    expect(this.findSelectable(mascot)).toBeNull();
+
+    mascot.tag.selected = true;
+    this.fixture.detectChanges();
+    expect(this.findSelectable(mascot)).toBeTruthy();
+  });
 });
