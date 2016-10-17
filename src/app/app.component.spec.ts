@@ -55,7 +55,7 @@ describe('App: MarchMadnessMascotsAngular2', () => {
     expect(this.findSelectable(mascot)).toBeTruthy();
     expect(this.findRank(mascot)).toBeNull();
 
-    mascot.selected = true;
+    this.app.selectMascot(mascot);
     this.fixture.detectChanges();
 
     expect(this.findSelectable(mascot)).toBeNull();
@@ -64,13 +64,13 @@ describe('App: MarchMadnessMascotsAngular2', () => {
 
   it('should unselect a mascot, remove it from the ranks, and add it back to selectables', () => {
     let mascot = this.app.selectableMascots()[0];
-    mascot.selected = true;
+    this.app.selectMascot(mascot);
     this.fixture.detectChanges();
 
     expect(this.findSelectable(mascot)).toBeNull();
     expect(this.findRank(mascot)).toBeTruthy();
 
-    mascot.selected = false;
+    this.app.unselectMascot(mascot);
     this.fixture.detectChanges();
 
     expect(this.findSelectable(mascot)).toBeTruthy();
@@ -105,7 +105,7 @@ describe('App: MarchMadnessMascotsAngular2', () => {
 
   it('should not include a mascot that is selected even if search matches', () => {
     let mascot = this.app.selectableMascots()[0];
-    mascot.selected = true;
+    this.app.selectMascot(mascot);
     this.app.searchTerm = mascot.school;
     this.fixture.detectChanges();
 
