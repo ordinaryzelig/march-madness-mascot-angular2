@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   mascotImagePath = 'assets/images/mascots/';
   searchTerm = null;
   picksSubmittedSuccessfully = null;
+  mascotSelected: boolean;
 
   constructor(
     private mascotService: MascotService,
@@ -34,6 +35,13 @@ export class AppComponent implements OnInit {
     this.initYears();
     this.changeYear(this.years[this.years.length - 1]);
     this.initTagDropdown();
+  }
+
+  ngAfterViewChecked() {
+    if(this.mascotSelected) {
+      this.scrollRanks();
+      this.mascotSelected = false;
+    }
   }
 
   changeYear(year) {
@@ -51,6 +59,7 @@ export class AppComponent implements OnInit {
 
   selectMascot(mascot) {
     this.entry.select(mascot);
+    this.mascotSelected = true;
   }
 
   unselectMascot(mascot) {
@@ -80,7 +89,7 @@ export class AppComponent implements OnInit {
   }
 
   selectRestRandomly() {
-    this.entry.selectableMascots().forEach(mascot => this.entry.select(mascot));
+    this.entry.selectableMascots().forEach(mascot => this.selectMascot(mascot));
   }
 
   //////////
@@ -102,6 +111,13 @@ export class AppComponent implements OnInit {
         .parent().find('.dropdown-menu')
         .on('click', e => e.stopPropagation());
     })
+  }
+
+  private scrollRanks() {
+    let ranksList = jQuery('#selected-mascots ol')[0];
+    console.log(ranksList.scrollTop);
+    console.log(ranksList.scrollHeight);
+    ranksList.scrollTop = ranksList.scrollHeight + 20;
   }
 
   private failedSubmittingPicks(error: any) {
