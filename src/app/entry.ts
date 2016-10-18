@@ -15,25 +15,23 @@ export class Entry {
   }
 
   select(mascot) {
-    mascot.selected = true;
     this.selectedIds.push(mascot.id);
   }
 
   unselect(unselectedMascot) {
-    unselectedMascot.selected = false;
     let idx = this.selectedIds.indexOf(unselectedMascot.id);
     this.selectedIds.splice(idx, 1);
   }
 
   selectedMascots(): Mascot[] {
-    let selected = [];
-    this.selectedIds.forEach(mascotId => selected.push(this.mascotsById[mascotId]));
-    return selected;
+    let selecteds = [];
+    this.selectedIds.forEach(mascotId => selecteds.push(this.mascotsById[mascotId]));
+    return selecteds;
   }
 
   selectableMascots(): Mascot[] {
     return this.mascots.filter(mascot =>
-      !mascot.selected
+      !this.isMascotSelected(mascot)
       && (
         mascot.tag.selected
         || this.selectedTags().length == 0
@@ -71,9 +69,7 @@ export class Entry {
     return this.tags.filter(t => t.selected);
   }
 
-  private mapTagNames(tags): string[] {
-    let tagNames = [];
-    for (let tag of tags) { tagNames.push(tag.name); }
-    return tagNames;
+  private isMascotSelected(mascot): boolean {
+    return this.selectedIds.indexOf(mascot.id) >= 0;
   }
 }

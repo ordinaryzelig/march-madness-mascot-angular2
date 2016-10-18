@@ -24,7 +24,7 @@ describe('Entry', () => {
     });
 
     it('excludes Mascots already selected', () => {
-      this.mascot.selected = true;
+      this.entry.select(this.mascot);
       expect(this.entry.selectableMascots()).toEqual([this.anotherMascot]);
     });
 

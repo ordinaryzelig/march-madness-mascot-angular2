@@ -4,7 +4,6 @@ export class Mascot {
   name: string;
   school: string;
   tag: Tag;
-  selected: boolean;
   imageFileName: string;
   id: string;
 
