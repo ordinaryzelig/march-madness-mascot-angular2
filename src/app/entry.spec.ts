@@ -38,8 +38,18 @@ describe('Entry', () => {
     });
 
     it('isComplete when all mascots selected', () => {
-      for (let m of this.allMascots) { m.selected = true; }
+      for (let m of this.allMascots) { this.entry.select(m); }
       expect(this.entry.isComplete()).toEqual(true);
+    });
+
+    it('preserves order of selection', () => {
+      this.entry.select(this.anotherMascot);
+      this.entry.select(this.mascot);
+      expect(this.entry.selectedMascots()).toEqual([this.anotherMascot, this.mascot]);
+
+      this.entry.unselect(this.anotherMascot);
+      this.entry.select(this.anotherMascot);
+      expect(this.entry.selectedMascots()).toEqual([this.mascot, this.anotherMascot]);
     });
   });
 });

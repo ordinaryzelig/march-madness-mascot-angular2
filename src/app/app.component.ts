@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
     this.initYears();
     this.changeYear(this.years[this.years.length - 1]);
     this.initTagDropdown();
-    //this.entry.selectableMascots().forEach(mascot => mascot.selected = true);
   }
 
   changeYear(year) {
@@ -81,7 +80,7 @@ export class AppComponent implements OnInit {
   }
 
   selectRestRandomly() {
-    this.entry.selectableMascots().forEach(mascot => mascot.selected = true);
+    this.entry.selectableMascots().forEach(mascot => this.entry.select(mascot));
   }
 
   //////////

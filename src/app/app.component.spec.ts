@@ -26,10 +26,10 @@ describe('App: MarchMadnessMascotsAngular2', () => {
   });
 
   this.findSelectable = (mascot) => {
-    return this.fixture.debugElement.query(By.css(`#mascot_${mascot.id()}`));
+    return this.fixture.debugElement.query(By.css(`#mascot_${mascot.id}`));
   }
   this.findRank = (mascot) => {
-    return this.fixture.debugElement.query(By.css(`#rank_${mascot.id()}`));
+    return this.fixture.debugElement.query(By.css(`#rank_${mascot.id}`));
   }
 
   it('should select the latest year by default', () => {

@@ -3,15 +3,32 @@ import { Tag }    from './tag';
 
 export class Entry {
   mascots: Mascot[];
+  selectedIds: string[];
+  mascotsById: any = {};
   tags: Tag[];
 
   constructor(mascots) {
     this.mascots = mascots;
+    this.selectedIds = [];
+    this.initMascotsById();
     this.initTags();
   }
 
+  select(mascot) {
+    mascot.selected = true;
+    this.selectedIds.push(mascot.id);
+  }
+
+  unselect(unselectedMascot) {
+    unselectedMascot.selected = false;
+    let idx = this.selectedIds.indexOf(unselectedMascot.id);
+    this.selectedIds.splice(idx, 1);
+  }
+
   selectedMascots(): Mascot[] {
-    return this.mascots.filter(mascot => mascot.selected);
+    let selected = [];
+    this.selectedIds.forEach(mascotId => selected.push(this.mascotsById[mascotId]));
+    return selected;
   }
 
   selectableMascots(): Mascot[] {
@@ -24,20 +41,17 @@ export class Entry {
     );
   }
 
-  select(mascot) {
-    mascot.selected = true;
-  }
-
-  unselect(unselectedMascot) {
-    unselectedMascot.selected = false;
-  }
-
   isComplete(): boolean {
     return this.selectedMascots().length == this.mascots.length;
   }
 
   /////////////////////////////////
   // Private
+
+  private initMascotsById() {
+    this.mascotsById = {};
+    this.mascots.forEach(mascot => this.mascotsById[mascot.id] = mascot);
+  }
 
   private initTags() {
     let allTags = [];

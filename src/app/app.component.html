@@ -18,7 +18,7 @@
 <div id="main">
   <div id="selectable-mascots" *ngIf="!entryIsComplete()">
     <ul class="list-unstyled row">
-      <li *ngFor="let mascot of selectableMascots()" attr.id="mascot_{{mascot.id()}}">
+      <li *ngFor="let mascot of selectableMascots()" attr.id="mascot_{{mascot.id}}">
         <div class="mascot mascot-card" (click)="selectMascot(mascot)">
           <img src="{{mascotImagePath}}{{mascot.imageFileName}}" class="img-responsive" />
           <div class="info text-center">
@@ -77,7 +77,7 @@
     <div id="selected-mascots">
       Ranks:
       <ol>
-        <li *ngFor="let mascot of selectedMascots()" attr.id="rank_{{mascot.id()}}">
+        <li *ngFor="let mascot of selectedMascots()" attr.id="rank_{{mascot.id}}">
           {{mascot.school}} {{mascot.name}}
           <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
         </li>

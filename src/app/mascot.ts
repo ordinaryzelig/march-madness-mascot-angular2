@@ -6,12 +6,14 @@ export class Mascot {
   tag: Tag;
   selected: boolean;
   imageFileName: string;
+  id: string;
 
   constructor(atts) {
     for (let attr of ['school', 'name', 'tag']) {
       this[attr] = atts[attr];
     }
     this.imageFileName = this.generateImageFileName();
+    this.id = this.underscore(`${this.school}_${this.name}`);
   }
 
   matches(searchTerm): boolean {
@@ -22,8 +24,6 @@ export class Mascot {
       }
     );
   }
-
-  id(): string { return this.underscore(`${this.school}_${this.name}`); }
 
   ///////////////////////////////
   // private
