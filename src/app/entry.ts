@@ -43,6 +43,10 @@ export class Entry {
     return this.selectedMascots().length == this.mascots.length;
   }
 
+  topPick(): Mascot {
+    return this.selectedMascots()[0];
+  }
+
   /////////////////////////////////
   // Private
 

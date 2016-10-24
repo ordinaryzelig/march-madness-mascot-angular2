@@ -76,16 +76,25 @@ export class AppComponent implements OnInit {
     this.searchTerm = term;
   }
 
+  showSubmissionForm(): boolean {
+    return this.entryIsComplete() && !this.picksSubmittedSuccessfully;
+  }
+
+  showFinishedMessage(): boolean {
+    return this.entryIsComplete() && this.picksSubmittedSuccessfully;
+  }
+
   entryIsComplete(): boolean {
     return this.entry.isComplete();
   }
 
   submitPicks() {
-    this.entryService.submit(this.entry)
-    .subscribe(
-      result => this.picksSubmittedSuccessfully = result,
-      error => this.failedSubmittingPicks(error),
-    );
+    this.entryService
+      .submit(this.entry)
+      .subscribe(
+        result => this.picksSubmittedSuccessfully = result,
+        error => this.failedSubmittingPicks(error),
+      );
   }
 
   selectRestRandomly() {
