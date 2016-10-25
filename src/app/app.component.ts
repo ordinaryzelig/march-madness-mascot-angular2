@@ -124,8 +124,6 @@ export class AppComponent implements OnInit {
 
   private scrollRanks() {
     let ranksList = jQuery('#selected-mascots ol')[0];
-    console.log(ranksList.scrollTop);
-    console.log(ranksList.scrollHeight);
     ranksList.scrollTop = ranksList.scrollHeight + 20;
   }
 
