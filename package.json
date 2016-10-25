@@ -4,11 +4,11 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve --prod",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
