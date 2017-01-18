@@ -129,5 +129,6 @@ export class AppComponent implements OnInit {
 
   private failedSubmittingPicks(error: any) {
     console.log(error);
+    alert("I fail. Sorry. Please copy/paste your list and email them to me.");
   }
 }
