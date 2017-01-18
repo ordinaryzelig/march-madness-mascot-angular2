@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Mascot }        from './mascot';
 import { Tag }           from './tag';
-import { MascotService } from './mascot.service.ts';
-import { EntryService }  from './entry.service.ts';
+import { MascotService } from './mascot.service';
+import { EntryService }  from './entry.service';
 
 declare var jQuery: any;
 

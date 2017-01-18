@@ -1,7 +1,7 @@
-import { MASCOT_DATA } from './mascot-data.ts';
-import { Mascot }      from './mascot.ts';
-import { TagSet }      from './tag-set.ts';
-import { Entry  }      from './entry.ts';
+import { MASCOT_DATA } from './mascot-data';
+import { Mascot }      from './mascot';
+import { TagSet }      from './tag-set';
+import { Entry  }      from './entry';
 
 export class MascotService {
   tagSet = new TagSet();
