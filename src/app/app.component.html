@@ -43,7 +43,7 @@
         <span id="email-optional" class="help-block">(If you want to send yourself a copy)</span>
         <input [(ngModel)]="entry.email" name="submit-picks-email" id="submit-picks-email" class="form-control" aria-describedby="email-optional" />
       </div>
-      <button type="submit" class="btn btn-info" (click)="submitPicks()">Send to Jared!</button>
+      <button type="submit" class="btn btn-info" (click)="submitPicks()" [disabled]="submittingPicks">Send to Jared!</button>
     </form>
   </div>
 

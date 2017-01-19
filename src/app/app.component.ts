@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   searchTerm = null;
   picksSubmittedSuccessfully = null;
   mascotSelected: boolean;
+  submittingPicks: boolean;
 
   constructor(
     private mascotService: MascotService,
@@ -89,6 +90,7 @@ export class AppComponent implements OnInit {
   }
 
   submitPicks() {
+    this.submittingPicks = true;
     this.entryService
       .submit(this.entry)
       .subscribe(
