@@ -10,11 +10,7 @@
   <div class="fixed-container">
     <div id="search-tools" class="form">
       <app-category-select [tags]="tags()"></app-category-select>
-
-      <div class="search form-group">
-        <label for="search-box" class="sr-only">Search</label>
-        <input id="search-box" #searchBox placeholder="Search" (keyup)="search(searchBox.value)" class="form-control" />
-      </div>
+      <app-mascot-search (search)="search($event)"></app-mascot-search>
     </div>
 
     <div id="selected-mascots">

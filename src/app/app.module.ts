@@ -7,6 +7,7 @@ import { AppComponent }               from './app.component';
 import { CategorySelectComponent }    from './category-select/component';
 import { EntrySubmissionComponent }   from './entry-submission/component';
 import { MascotImageComponent }       from './mascot-image/component';
+import { MascotSearchComponent }      from './mascot-search/component';
 import { MascotsSelectableComponent } from './mascots-selectable/component';
 import { NavbarComponent }            from './navbar/component';
 
@@ -16,6 +17,7 @@ import { NavbarComponent }            from './navbar/component';
     CategorySelectComponent,
     EntrySubmissionComponent,
     MascotImageComponent,
+    MascotSearchComponent,
     MascotsSelectableComponent,
     NavbarComponent,
   ],
