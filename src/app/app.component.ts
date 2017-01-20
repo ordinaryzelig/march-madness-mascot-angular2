@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   entry = null;
   years = [];
   selectedYear = null;
-  mascotImagePath = 'assets/images/mascots/';
   searchTerm = null;
   picksSubmittedSuccessfully = null;
   mascotSelected: boolean;

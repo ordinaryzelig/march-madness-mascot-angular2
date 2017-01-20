@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/component';
+import { MascotsSelectableComponent } from './mascots-selectable/component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    MascotsSelectableComponent
   ],
   imports: [
     BrowserModule,

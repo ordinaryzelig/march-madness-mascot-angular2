@@ -36,41 +36,6 @@
 // end Layout.
 ////////////////////////////////////
 
-#selectable-mascots li {
-  display: inline-block;
-  vertical-align: top;
-  padding: 20px;
-
-  /* Small devices (tablets, 768px and up) */
-  @media (min-width: @screen-sm-min) {
-    width: 25%; // 4 per row
-  }
-
-  /* Large devices (large desktops, 1200px and up) */
-  @media (min-width: @screen-lg-min) {
-    width: 20%; // 5 per row
-  }
-
-  .mascot-card {
-    border: 1px solid black;
-    background-color: white;
-    padding: 5px;
-    cursor: pointer;
-    .img {
-      .center-block();
-    }
-    .info {
-      font-weight: bold;
-      .school .name {
-        font-size: 20px;
-      }
-      .tag {
-        font-size: 12px;
-      }
-    }
-  }
-}
-
 #sidebar {
   .fixed-container {
     background-color: rgba(0, 0, 0, 0.75);

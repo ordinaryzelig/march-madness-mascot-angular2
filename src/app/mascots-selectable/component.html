@@ -1,0 +1,14 @@
+<div id="selectable-mascots">
+  <ul class="list-unstyled row">
+    <li *ngFor="let mascot of mascots" attr.id="mascot_{{mascot.id}}">
+      <div class="mascot mascot-card" (click)="onSelectMascot(mascot)">
+        <img src="{{mascotImagePath}}{{mascot.imageFileName}}" class="img-responsive" />
+        <div class="info text-center">
+          <div class="school">{{mascot.school}}</div>
+          <div class="name">{{mascot.name}}</div>
+          <div class="tag label label-default">{{mascot.tag.name}}</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

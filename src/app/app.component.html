@@ -1,20 +1,7 @@
 <app-navbar [years]="years" [selectedYear]="selectedYear" (changeYear)="changeYear($event)" ></app-navbar>
 
 <div id="main">
-  <div id="selectable-mascots" *ngIf="!entryIsComplete()">
-    <ul class="list-unstyled row">
-      <li *ngFor="let mascot of selectableMascots()" attr.id="mascot_{{mascot.id}}">
-        <div class="mascot mascot-card" (click)="selectMascot(mascot)">
-          <img src="{{mascotImagePath}}{{mascot.imageFileName}}" class="img-responsive" />
-          <div class="info text-center">
-            <div class="school">{{mascot.school}}</div>
-            <div class="name">{{mascot.name}}</div>
-            <div class="tag label label-default">{{mascot.tag.name}}</div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <app-mascots-selectable *ngIf="!entryIsComplete()" [mascots]="selectableMascots()" (selectMascot)="selectMascot($event)"></app-mascots-selectable>
 
   <div *ngIf="showSubmissionForm()" id="submit-picks">
     <form>
