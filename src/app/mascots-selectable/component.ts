@@ -9,7 +9,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class MascotsSelectableComponent {
   @Input() mascots: any;
   @Output() selectMascot = new EventEmitter();
-  mascotImagePath = 'assets/images/mascots/';
 
   onSelectMascot(mascot) {
     this.selectMascot.emit(mascot)

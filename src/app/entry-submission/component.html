@@ -18,6 +18,6 @@
   <h2>All done!</h2>
   <h2>Go {{entry.topPick().name}}!!!</h2>
   <div>
-    <img src="{{mascotImagePath}}{{entry.topPick().imageFileName}}" class="img-responsive" />
+    <app-mascot-image [mascot]="entry.topPick()"></app-mascot-image>
   </div>
 </div>
