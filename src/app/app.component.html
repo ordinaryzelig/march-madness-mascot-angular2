@@ -9,22 +9,7 @@
 <div id="sidebar">
   <div class="fixed-container">
     <div id="search-tools" class="form">
-      <div class="tags form-group">
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-            Categories
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li *ngFor="let tag of tags()">
-              <label>
-                <input type="checkbox" [(ngModel)]="tag.selected" />
-                {{tag.name}}
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <app-category-select [tags]="tags()"></app-category-select>
 
       <div class="search form-group">
         <label for="search-box" class="sr-only">Search</label>
