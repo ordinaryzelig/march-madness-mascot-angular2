@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-ranks',
@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 
 export class RanksComponent {
   @Input() entry: any;
+  @Output() selectRestRandomly = new EventEmitter();
 
   mascots() {
     return this.entry.selectedMascots();
@@ -19,5 +20,9 @@ export class RanksComponent {
 
   unselectMascot(mascot) {
     this.entry.unselect(mascot);
+  }
+
+  onClickSelectRestRandomly() {
+    this.selectRestRandomly.emit()
   }
 }
