@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.initYears();
     this.changeYear(this.years[this.years.length - 1]);
-    this.initTagDropdown();
   }
 
   ngAfterViewChecked() {
@@ -91,16 +90,6 @@ export class AppComponent implements OnInit {
 
   private initEntry() {
     this.entry = this.mascotService.entryForYear(this.selectedYear);
-  }
-
-  private initTagDropdown() {
-    jQuery(document).ready(function() {
-      jQuery('.tags .dropdown .dropdown-toggle')
-        .dropdown()
-        // Prevent menu from closing when clicking.
-        .parent().find('.dropdown-menu')
-        .on('click', e => e.stopPropagation());
-    })
   }
 
   private scrollRanks() {
