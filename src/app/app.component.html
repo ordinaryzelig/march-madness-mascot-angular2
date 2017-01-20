@@ -13,17 +13,6 @@
       <app-mascot-search (search)="search($event)"></app-mascot-search>
     </div>
 
-    <div id="selected-mascots">
-      Ranks:
-      <ol>
-        <li *ngFor="let mascot of selectedMascots()" attr.id="rank_{{mascot.id}}">
-          {{mascot.school}} {{mascot.name}}
-          <a (click)="unselectMascot(mascot)"><span class="glyphicon glyphicon-remove"></span></a>
-        </li>
-      </ol>
-      <div *ngIf="!entryIsComplete()">
-        <a (click)="selectRestRandomly()">Finish it for me</a>
-      </div>
-    </div>
+    <app-ranks [entry]="entry"></app-ranks>
   </div>
 </div>

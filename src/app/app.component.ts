@@ -60,10 +60,6 @@ export class AppComponent implements OnInit {
     this.mascotSelected = true;
   }
 
-  unselectMascot(mascot) {
-    this.entry.unselect(mascot);
-  }
-
   selectableMascots(): Mascot[] {
     return this.entry.selectableMascots().filter(
       mascot => this.searchTerm ? mascot.matches(this.searchTerm) : true

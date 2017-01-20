@@ -10,6 +10,7 @@ import { MascotImageComponent }       from './mascot-image/component';
 import { MascotSearchComponent }      from './mascot-search/component';
 import { MascotsSelectableComponent } from './mascots-selectable/component';
 import { NavbarComponent }            from './navbar/component';
+import { RanksComponent }             from './ranks/component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NavbarComponent }            from './navbar/component';
     MascotSearchComponent,
     MascotsSelectableComponent,
     NavbarComponent,
+    RanksComponent,
   ],
 
   imports: [

@@ -1,0 +1,15 @@
+@import "../../../node_modules/bootstrap/less/variables";
+@import "../../../node_modules/bootstrap/less/mixins";
+@import "../../../node_modules/bootstrap/less/grid";
+
+#selected-mascots {
+  // height = sidebar - search-tools - text.
+  @media (min-width: @screen-sm-min) { height: 80%; } // portrait still has empty space at bottom.
+  @media (min-width: @screen-lg-min) { height: 75%; }
+
+  color: white;
+  ol {
+    height: 90%;
+    overflow: scroll;
+  }
+}
