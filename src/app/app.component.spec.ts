@@ -1,7 +1,15 @@
 import { TestBed, async, ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { By }                                         from '@angular/platform-browser';
 
-import { AppComponent }   from './app.component';
+import { AppComponent }               from './app.component';
+import { CategorySelectComponent }    from './category-select/component';
+import { EntrySubmissionComponent }   from './entry-submission/component';
+import { MascotImageComponent }       from './mascot-image/component';
+import { MascotSearchComponent }      from './mascot-search/component';
+import { MascotsSelectableComponent } from './mascots-selectable/component';
+import { NavbarComponent }            from './navbar/component';
+import { RanksComponent }             from './ranks/component';
+
 import { FormsModule }    from '@angular/forms';
 import { HttpModule }     from '@angular/http';
 
@@ -11,7 +19,14 @@ describe('App: MarchMadnessMascotsAngular2', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CategorySelectComponent,
+        EntrySubmissionComponent,
+        MascotImageComponent,
+        MascotSearchComponent,
+        MascotsSelectableComponent,
+        NavbarComponent,
+        RanksComponent,
       ],
       imports: [
         FormsModule,
@@ -70,7 +85,7 @@ describe('App: MarchMadnessMascotsAngular2', () => {
     expect(this.findSelectable(mascot)).toBeNull();
     expect(this.findRank(mascot)).toBeTruthy();
 
-    this.app.unselectMascot(mascot);
+    this.app.entry.unselect(mascot);
     this.fixture.detectChanges();
 
     expect(this.findSelectable(mascot)).toBeTruthy();
