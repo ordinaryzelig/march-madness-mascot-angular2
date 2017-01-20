@@ -3,17 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { Mascot }        from './mascot';
 import { Tag }           from './tag';
 import { MascotService } from './mascot.service';
-import { EntryService }  from './entry.service';
 
 declare var jQuery: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+  styleUrls: [
+    './layout.less',
+    './app.component.less',
+  ],
   providers: [
     MascotService,
-    EntryService,
   ],
 })
 
@@ -22,13 +23,10 @@ export class AppComponent implements OnInit {
   years = [];
   selectedYear = null;
   searchTerm = null;
-  picksSubmittedSuccessfully = null;
   mascotSelected: boolean;
-  submittingPicks: boolean;
 
   constructor(
     private mascotService: MascotService,
-    private entryService: EntryService,
   ) {}
 
   ngOnInit() {
@@ -76,30 +74,16 @@ export class AppComponent implements OnInit {
     this.searchTerm = term;
   }
 
-  showSubmissionForm(): boolean {
-    return this.entryIsComplete() && !this.picksSubmittedSuccessfully;
-  }
-
-  showFinishedMessage(): boolean {
-    return this.entryIsComplete() && this.picksSubmittedSuccessfully;
-  }
-
   entryIsComplete(): boolean {
     return this.entry.isComplete();
   }
 
-  submitPicks() {
-    this.submittingPicks = true;
-    this.entryService
-      .submit(this.entry)
-      .subscribe(
-        result => this.picksSubmittedSuccessfully = result,
-        error => this.failedSubmittingPicks(error),
-      );
-  }
-
   selectRestRandomly() {
     this.entry.selectableMascots().forEach(mascot => this.selectMascot(mascot));
+  }
+
+  showSubmissionForm(): boolean {
+    return this.entry.isComplete();
   }
 
   //////////
@@ -126,10 +110,5 @@ export class AppComponent implements OnInit {
   private scrollRanks() {
     let ranksList = jQuery('#selected-mascots ol')[0];
     ranksList.scrollTop = ranksList.scrollHeight + 20;
-  }
-
-  private failedSubmittingPicks(error: any) {
-    console.log(error);
-    alert("I fail. Sorry. Please copy/paste your list and email them to me.");
   }
 }

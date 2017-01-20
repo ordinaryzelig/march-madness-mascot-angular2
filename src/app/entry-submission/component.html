@@ -1,0 +1,23 @@
+<div id="submit-picks" *ngIf="!picksSubmittedSuccessfully">
+  <form>
+    <h3>Almost done! I just need to know who made these awesome picks.</h3>
+    <div class="form-group">
+      <label for="submit-picks-name">Name</label>
+      <input [(ngModel)]="entry.name" name="submit-picks-name" id="submit-picks-name" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="submit-picks-email">Email</label>
+      <span id="email-optional" class="help-block">(If you want to send yourself a copy)</span>
+      <input [(ngModel)]="entry.email" name="submit-picks-email" id="submit-picks-email" class="form-control" aria-describedby="email-optional" />
+    </div>
+    <button type="submit" class="btn btn-info" (click)="submitPicks()" [disabled]="submittingPicks">Send to Jared!</button>
+  </form>
+</div>
+
+<div *ngIf="showFinishedMessage()" id="finished-message" class="panel panel-default text-center">
+  <h2>All done!</h2>
+  <h2>Go {{entry.topPick().name}}!!!</h2>
+  <div>
+    <img src="{{mascotImagePath}}{{entry.topPick().imageFileName}}" class="img-responsive" />
+  </div>
+</div>

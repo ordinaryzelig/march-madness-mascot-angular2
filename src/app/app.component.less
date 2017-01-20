@@ -2,40 +2,6 @@
 @import "../../node_modules/bootstrap/less/mixins";
 @import "../../node_modules/bootstrap/less/grid";
 
-////////////////////////////////////
-// Layout
-
-#main {
-  .make-xs-column(9);
-}
-
-#sidebar {
-  .make-xs-column(3);
-  .fixed-container {
-    position: fixed;
-  }
-  padding: 5px;
-}
-
-#submit-picks {
-  .container-fluid();
-  .make-xs-column(4);
-  .make-xs-column-offset(4);
-}
-
-#finished-message {
-  .container-fluid();
-  .make-xs-column(5);
-  .make-xs-column-offset(3);
-  padding: 10px;
-  img {
-    margin: 0 auto;
-  }
-}
-
-// end Layout.
-////////////////////////////////////
-
 #sidebar {
   .fixed-container {
     background-color: rgba(0, 0, 0, 0.75);
@@ -55,8 +21,4 @@
       }
     }
   }
-}
-
-#submit-picks {
-  background-color: #ddd;
 }
