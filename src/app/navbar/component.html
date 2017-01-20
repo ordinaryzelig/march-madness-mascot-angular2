@@ -1,0 +1,16 @@
+<nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        March Madness Masc<img alt="Brand" src="/assets/images/basketball.png" />ts
+      </a>
+    </div>
+
+    <form class="navbar-form navbar-right">
+      <label for="year-select" class="sr-only">Select Year</label>
+      <select id="year-select" (change)="onChangeYear($event.target.value)" class="form-control">
+        <option *ngFor="let year of years" [value]="year" [selected]="year == selectedYear">{{year}}</option>
+      </select>
+    </form>
+  </div>
+</nav>
