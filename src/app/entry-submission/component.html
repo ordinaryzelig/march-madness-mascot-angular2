@@ -1,6 +1,6 @@
 <div id="submit-picks" *ngIf="!showFinishedMessage()">
   <form>
-    <h3>Almost done! I just need to know who made these awesome picks.</h3>
+    <h3>Almost done! Who are these awesome picks for?</h3>
     <div class="form-group">
       <label for="submit-picks-name">Name</label>
       <input [(ngModel)]="entry.name" name="submit-picks-name" id="submit-picks-name" class="form-control" />
@@ -10,7 +10,7 @@
       <span id="email-optional" class="help-block">(If you want to send yourself a copy)</span>
       <input [(ngModel)]="entry.email" name="submit-picks-email" id="submit-picks-email" class="form-control" aria-describedby="email-optional" />
     </div>
-    <button id="submit" type="submit" class="btn btn-info" (click)="submitPicks()" [disabled]="submittingPicks">Send to Jared!</button>
+    <button id="submit" type="submit" class="btn btn-info" (click)="submitPicks()" [disabled]="submittingPicks">Send to Jared</button>
   </form>
 </div>
 
