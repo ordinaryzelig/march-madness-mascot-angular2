@@ -38,12 +38,13 @@ export class EntrySubmissionComponent {
   }
 
   showFinishedMessage(): boolean {
-    return this.entry.isComplete() && this.picksSubmittedSuccessfully;
+    return this.picksSubmittedSuccessfully;
   }
 
   private failedSubmittingPicks(error: any) {
     console.log(error);
     alert("I fail. Sorry. Please copy/paste your list and email them to me.");
+    this.stopSpinner();
   }
 
   private startSpinner() {
@@ -55,4 +56,9 @@ export class EntrySubmissionComponent {
     };
     this.spinner = new Spinner(opts).spin(document.getElementById('submit'));
   }
+
+  private stopSpinner() {
+    this.spinner.stop();
+  }
+
 }
