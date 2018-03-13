@@ -13,7 +13,7 @@ import { RanksComponent }             from './ranks/component';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule }     from '@angular/http';
 
-import { MascotService } from './mascot.service.ts';
+import { MascotService } from './mascot.service';
 
 describe('App: MarchMadnessMascotsAngular2', () => {
   beforeEach(() => {
