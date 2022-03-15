@@ -4,8 +4,8 @@
 - `rake mascots:compile`
 - image format: school_mascot.png
 
-## Startup
+## Development
 
-### Development
+install: `npm install -g @angular/cli`
 
-`ng serve`
+startup: `ng serve`
