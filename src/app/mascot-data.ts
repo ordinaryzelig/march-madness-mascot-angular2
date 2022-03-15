@@ -2441,7 +2441,7 @@
     },
     {
       "school": "Montana St.",
-      "name": "Bobcat",
+      "name": "Bobcats",
       "tag": "cat"
     },
     {
