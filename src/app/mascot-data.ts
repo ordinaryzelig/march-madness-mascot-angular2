@@ -2229,7 +2229,7 @@
     },
     {
       "school": "Virginia Tech",
-      "name": "Hokiebirds",
+      "name": "Hokies",
       "tag": "bird"
     },
     {
@@ -2506,7 +2506,7 @@
     },
     {
       "school": "Virginia Tech",
-      "name": "Hokiebirds",
+      "name": "Hokies",
       "tag": "bird"
     },
     {
@@ -3678,7 +3678,7 @@
     },
     {
       "Akron": "Virginia Tech",
-      "Zips": "Hokiebirds",
+      "Zips": "Hokies",
       "other": "bird"
     },
     {
